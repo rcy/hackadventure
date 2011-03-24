@@ -27,7 +27,7 @@ body {
     color: white;
 }
 .edit {
-    float: right;
+    /* float: right; */
 }
 
 pre code {
@@ -37,7 +37,6 @@ pre code {
 h1 {
     margin: 0;
     padding: 0;
-    text-align: center;
 }
 
 p {

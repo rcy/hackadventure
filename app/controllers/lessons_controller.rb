@@ -32,16 +32,24 @@ class LessonsController < ApplicationController
 
   def update
     @lesson = CouchPotato.database.load_document(params[:id])
-    @lesson.name = params[:lesson][:name]
-    @lesson.body = params[:lesson][:body]
-    @lesson.deps = params[:lesson][:deps]
+    @lesson.update(params[:lesson])
+    # @lesson.name = params[:lesson][:name]
+    # @lesson.body = params[:lesson][:body]
+    # @lesson.deps = params[:lesson][:deps]
+    logger.debug @lesson.inspect
     @lesson.save!
     redirect_to @lesson
   end
 
+  def destroy
+    @lesson = CouchPotato.database.load_document params[:id]
+    @lesson.destroy!
+    redirect_to :action => :index
+  end
+
   private
   def get_lessons
-    @lessons = CouchPotato.database.view Lesson.all
+    @lessons = Lesson.all
   end
 
 end

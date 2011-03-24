@@ -5,16 +5,16 @@
     <%= f.text_field :name %>
   </fieldset>
 
+  <fieldset class="dependencies">
+    <%= f.label :pretty_dependencies, 'Dependencies (comma seperated):' %>
+    <br>
+    <%= f.text_field :pretty_dependencies %>
+  </fieldset>
+
   <fieldset class="body">
     <%= f.label :body, 'Body:' %>
     <br>
     <%= f.text_area :body %>
-  </fieldset>
-
-  <fieldset class="dependencies">
-    <%= f.label :deps, 'Dependencies (comma seperated):' %>
-    <br>
-    <%= f.text_field :deps %>
   </fieldset>
 
   <%= f.submit %>
