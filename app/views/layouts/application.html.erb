@@ -8,7 +8,12 @@
 </head>
 <body>
 
-<%= yield %>
+  <div id="nav">
+    <%= link_to 'all lessons', lessons_path %> |
+    <%= link_to 'new lesson', new_lesson_path %>
+  </div>
+
+  <%= yield %>
 
 </body>
 </html>
