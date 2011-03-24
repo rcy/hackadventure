@@ -1,3 +1,7 @@
+body {
+    font-family: times;
+}
+
 #nav {
     background: goldenrod;
     padding: 10px;
@@ -16,6 +20,30 @@
 }
 
 .body {
+    padding: 1em;
+}
+.dependencies {
     background: black;
     color: white;
+}
+.edit {
+    float: right;
+}
+
+pre code {
+    color: green;
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+p {
+    margin: .5em;
+}
+
+pre {
+    margin-left: 1em;
 }

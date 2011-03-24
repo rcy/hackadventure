@@ -3,7 +3,7 @@ no lessons
 <% else %>
 <% @lessons.each do |l| %>
 <div>
-  <%= link_to l.name, l %>
+  <%= link_to textilize(l.name).html_safe, l %>
 </div>
 <% end %>
 <% end %>
