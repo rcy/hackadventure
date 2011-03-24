@@ -1,6 +1,7 @@
 class LessonsController < ApplicationController
+  before_filter :get_lessons
+
   def index
-    @lessons = CouchPotato.database.view Lesson.all
   end
 
   def new
@@ -14,11 +15,29 @@ class LessonsController < ApplicationController
     @lesson.deps = params[:lesson][:deps]
 
     @lesson.save!
-    redirect_to :action => :index
+    redirect_to :action => :show, :id => @lesson.id
   end
 
   def show
-    @lesson= CouchPotato.database.load_document(params[:id])
+    @lesson = CouchPotato.database.load_document(params[:id])
+  end
+
+  def edit
+    @lesson = CouchPotato.database.load_document(params[:id])
+  end
+
+  def update
+    @lesson = CouchPotato.database.load_document(params[:id])
+    @lesson.name = params[:lesson][:name]
+    @lesson.body = params[:lesson][:body]
+    @lesson.deps = params[:lesson][:deps]
+    @lesson.save!
+    redirect_to @lesson
+  end
+
+  private
+  def get_lessons
+    @lessons = CouchPotato.database.view Lesson.all
   end
 
 end

@@ -13,7 +13,16 @@
     <%= link_to 'new lesson', new_lesson_path %>
   </div>
 
-  <%= yield %>
+  <div id="sidebar">
+    <%= render :partial => 'sidebar' %>
+  </div>
+
+  <div id="content">
+    <%= yield %>
+  </div>
+
+  <div style="clear:both"></div>
+  footer
 
 </body>
 </html>

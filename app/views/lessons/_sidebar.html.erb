@@ -1,0 +1,9 @@
+<% if @lessons.blank? %>
+no lessons
+<% else %>
+<% @lessons.each do |l| %>
+<div>
+  <%= link_to l.name, l %>
+</div>
+<% end %>
+<% end %>

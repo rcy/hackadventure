@@ -2,3 +2,20 @@
     background: goldenrod;
     padding: 10px;
 }
+
+#sidebar {
+    background: #ddd;
+    float:left;
+    width: 10%;
+}
+
+#content {
+    background: #eee;
+    width: 90%;
+    float:left;
+}
+
+.body {
+    background: black;
+    color: white;
+}
