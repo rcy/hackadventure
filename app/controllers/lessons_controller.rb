@@ -2,6 +2,10 @@ class LessonsController < ApplicationController
   before_filter :get_lessons
 
   def index
+    respond_to do |format|
+      format.html
+      format.json { render :json => @lessons }
+    end
   end
 
   def new
