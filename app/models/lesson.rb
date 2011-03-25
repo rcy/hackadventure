@@ -8,12 +8,16 @@ class Lesson
   validates_presence_of :body
 
   property :deps
-  validates_presence_of :deps
 
   view :by_name, :key => :name
+  view :by_id, :key => :_id
+
+  def pretty_name
+    textilize(name).html_safe
+  end
 
   def self.all
-    CouchPotato.database.view Lesson.by_name
+    CouchPotato.database.view Lesson.by_id
   end
 
   def update hash
@@ -27,7 +31,16 @@ class Lesson
   end
 
   def destroy!
+    # TODO: check if this lesson is a prereq for any other
     CouchPotato.database.destroy self
+  end
+
+  def prerequisites
+    if deps
+      deps.split(/,/).map { |id| CouchPotato.database.load_document id }
+    else
+      []
+    end
   end
 
   def pretty_dependencies

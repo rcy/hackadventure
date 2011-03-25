@@ -6,8 +6,11 @@
 
 <h1><%= textilize(@lesson.name).html_safe %></h1>
 
-<div class="dependencies">
-  Prerequisites: <%= @lesson.deps %>
+<div id="dependencies">
+  Prerequisites: 
+  <% @prerequisites.each do |p| %>
+    <%= link_to p && p.pretty_name, p %>
+  <% end %>
 </div>
 
 <div class="body">

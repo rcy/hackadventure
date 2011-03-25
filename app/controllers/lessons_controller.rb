@@ -24,6 +24,7 @@ class LessonsController < ApplicationController
 
   def show
     @lesson = CouchPotato.database.load_document(params[:id])
+    @prerequisites = @lesson.prerequisites
   end
 
   def edit

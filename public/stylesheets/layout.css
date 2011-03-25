@@ -1,37 +1,86 @@
 body {
-    font-family: times;
+    font-family: sans;
+    background: white;
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-#nav {
+.add {
     background: goldenrod;
-    padding: 10px;
-}
-
-#sidebar {
-    background: #ddd;
-    float:left;
-    width: 10%;
+    text-align: center;
 }
 
 #content {
-    background: #eee;
-    width: 90%;
+    background: #ddd;
     float:left;
+    width: 600px;
+}
+
+#sidebar {
+    background: #4F7995;
+    float:left;
+    width: 200px;
+    height: 1000px;
+}
+
+#sidebar h1,h2,h3,h4 {
+    margin:0; padding:0; text-align: center;
+}
+
+#sidebar p {
+    margin: 0;
+}
+
+pre {
+    padding: 1em;
+    border: 1px dashed orange;
+    background: #f0f0f0;
+    color: black;
+}
+
+#sidebar ul {
+    /* list-style: none; */
+    margin-left: 0;
+    padding-left: 1.5em;
+}
+#sidebar li .current {
+    color: orange;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    background: black;
+    color: white;
 }
 
 .body {
     padding: 1em;
 }
-.dependencies {
-    background: black;
-    color: white;
-}
-.edit {
-    /* float: right; */
+#dependencies {
+    background: #9D877A;
+    color: black;
 }
 
-pre code {
-    color: green;
+#dependencies p {
+    color: red;
+    margin: 0;
+    padding: 0;
+    display: inline;
+}
+#dependencies a {
+    text-decoration: none;
+}
+#dependencies a:hover {
+    background: black;
+}
+
+.edit {
+    /* float: right; */
 }
 
 h1 {
@@ -41,8 +90,4 @@ h1 {
 
 p {
     margin: .5em;
-}
-
-pre {
-    margin-left: 1em;
 }

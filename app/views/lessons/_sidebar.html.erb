@@ -1,9 +1,22 @@
-<% if @lessons.blank? %>
-no lessons
-<% else %>
-<% @lessons.each do |l| %>
-<div>
-  <%= link_to textilize(l.name).html_safe, l %>
+<div id="sidebar">
+  <h2>C</h2>
+  <p class="add">
+    <%= link_to 'create new lesson', new_lesson_path %>
+  </p>
+
+  <% if @lessons.blank? %>
+  no lessons
+  <% else %>
+  <ul>
+    <% @lessons.each do |l| %>
+    <li>
+      <% if ("current" if l == @lesson) %>
+      <span class="current"><%= l.name %></span>
+      <% else %>
+      <%= link_to l.name, l %>
+      <% end %>
+    </li>
+    <% end %>
+  </ul>
+  <% end %>
 </div>
-<% end %>
-<% end %>
