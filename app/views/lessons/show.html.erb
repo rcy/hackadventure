@@ -1,6 +1,5 @@
 <div class="edit">
   <%= link_to "Edit", edit_lesson_path(@lesson) %> |
-  <%= link_to "Destroy", {:action => :destroy, :id => @lesson}, :confirm => "you sure?", :method => :delete %> |
   <%= link_to "Couch", "http://localhost:5984/_utils/document.html?indirect_development_db/#{@lesson.id}" %>
 </div>
 
