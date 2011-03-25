@@ -13,7 +13,7 @@ class Lesson
   view :by_id, :key => :_id
 
   def pretty_name
-    textilize(name).html_safe
+    name
   end
 
   def self.all
@@ -37,7 +37,9 @@ class Lesson
 
   def prerequisites
     if deps
-      deps.split(/,/).map { |id| CouchPotato.database.load_document id }
+      deps.split(/,/).map do |id|
+        CouchPotato.database.load_document(id) || Lesson.new(:name => id)
+      end
     else
       []
     end

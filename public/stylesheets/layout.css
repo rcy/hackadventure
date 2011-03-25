@@ -1,9 +1,8 @@
 body {
     font-family: sans;
     background: white;
-    width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: .5em;
+    margin-right: .5em;
 }
 
 .add {
@@ -14,14 +13,14 @@ body {
 #content {
     background: #ddd;
     float:left;
-    width: 600px;
+    width: 75%;
 }
 
 #sidebar {
     background: #4F7995;
     float:left;
-    width: 200px;
-    height: 1000px;
+    width: 15%;
+    font-size: 75%;
 }
 
 #sidebar h1,h2,h3,h4 {
@@ -91,3 +90,6 @@ h1 {
 p {
     margin: .5em;
 }
+
+acronym { border-bottom: 1px dashed black; }
+acronym:hover { cursor: help; }
