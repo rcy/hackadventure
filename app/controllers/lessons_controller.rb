@@ -14,10 +14,7 @@ class LessonsController < ApplicationController
 
   def create
     @lesson = Lesson.new
-    @lesson.name = params[:lesson][:name]
-    @lesson.body = params[:lesson][:body]
-    @lesson.deps = params[:lesson][:deps]
-
+    @lesson.update(params[:lesson])
     @lesson.save!
     redirect_to :action => :show, :id => @lesson.id
   end
@@ -34,10 +31,6 @@ class LessonsController < ApplicationController
   def update
     @lesson = CouchPotato.database.load_document(params[:id])
     @lesson.update(params[:lesson])
-    # @lesson.name = params[:lesson][:name]
-    # @lesson.body = params[:lesson][:body]
-    # @lesson.deps = params[:lesson][:deps]
-    logger.debug @lesson.inspect
     @lesson.save!
     redirect_to @lesson
   end

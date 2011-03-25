@@ -1,8 +1,25 @@
-<div id="sidebar">
-  <h2>NTC Lessons</h2>
-  <p class="add">
-    <%= link_to 'create new lesson', new_lesson_path %>
-  </p>
+<div id="sidebar" class="left">
+  <h2>Previous</h2>
+
+  <% if @lessons.blank? %>
+  no lessons
+  <% else %>
+  <ul>
+    <% @lessons.each do |l| %>
+    <li>
+      <% if ("current" if l == @lesson) %>
+      <span class="current"><%= l.name %></span>
+      <% else %>
+      <%= link_to l.name, l %>
+      <% end %>
+    </li>
+    <% end %>
+  </ul>
+  <% end %>
+</div>
+
+<div id="sidebar" class="right">
+  <h2>Next</h2>
 
   <% if @lessons.blank? %>
   no lessons

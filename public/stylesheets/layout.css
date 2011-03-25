@@ -5,22 +5,30 @@ body {
     margin-right: .5em;
 }
 
-.add {
+#nav {
     background: goldenrod;
     text-align: center;
+    font-size: 50%;
 }
 
 #content {
     background: #ddd;
     float:left;
-    width: 75%;
+    width: 70%;
 }
 
 #sidebar {
     background: #4F7995;
-    float:left;
     width: 15%;
     font-size: 75%;
+}
+
+#sidebar.left {
+    float:left;
+}
+
+#sidebar.right {
+    float:right;
 }
 
 #sidebar h1,h2,h3,h4 {
@@ -45,6 +53,10 @@ pre {
 }
 #sidebar li .current {
     color: orange;
+}
+
+#content a {
+    color: green;
 }
 
 a {
@@ -73,6 +85,7 @@ a:hover {
 }
 #dependencies a {
     text-decoration: none;
+    color: red;
 }
 #dependencies a:hover {
     background: black;
