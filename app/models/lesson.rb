@@ -20,10 +20,27 @@ class Lesson
     CouchPotato.database.view Lesson.by_id
   end
 
-  def update hash
-    self.name = hash[:name]
-    self.body = hash[:body]
-    self.deps = hash[:pretty_dependencies].to_s.downcase
+  def update params
+    self.name = params[:name]
+    self.body = params[:body]
+    dep_names = params[:pretty_dependencies].to_s.downcase.split(/,/).map(&:strip)
+
+    self.deps = dep_names.map do |name|
+      doc = Lesson.find_by_name name
+      unless doc
+        doc = Lesson.new(:name => name, :body => 'EDITME')
+        doc.save!
+      end
+      doc.id
+    end
+  end
+
+  def self.find_all_by_name name
+    CouchPotato.database.view Lesson.by_name(:key => name)
+  end
+
+  def self.find_by_name name
+    self.find_all_by_name(name).first
   end
 
   def save!
@@ -36,9 +53,9 @@ class Lesson
   end
 
   def prerequisites
-    if deps
-      deps.split(/,/).map do |id|
-        CouchPotato.database.load_document(id) || Lesson.new(:name => id)
+    if deps && deps.is_a?(Array)
+      deps.map do |id|
+        CouchPotato.database.load_document(id)
       end
     else
       []
@@ -46,6 +63,6 @@ class Lesson
   end
 
   def pretty_dependencies
-    deps.to_s.upcase
+    prerequisites.map(&:name).join(',')
   end
 end
