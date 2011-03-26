@@ -11,13 +11,18 @@ class Lesson
 
   view :by_name, :key => :name
   view :by_id, :key => :_id
+  view :by_dep, :key => :deps
 
   def pretty_name
     name
   end
 
   def self.all
-    CouchPotato.database.view Lesson.by_id
+    CouchPotato.database.view Lesson.by_name
+  end
+
+  def self.can_do
+    CouchPotato.database.view Lesson.by_dep(:key => [])
   end
 
   def update params
@@ -28,7 +33,7 @@ class Lesson
     self.deps = dep_names.map do |name|
       doc = Lesson.find_by_name name
       unless doc
-        doc = Lesson.new(:name => name, :body => 'EDITME')
+        doc = Lesson.new(:name => name, :body => 'EDITME', :deps => [])
         doc.save!
       end
       doc.id

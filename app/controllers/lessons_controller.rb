@@ -44,6 +44,7 @@ class LessonsController < ApplicationController
   private
   def get_lessons
     @lessons = Lesson.all
+    @cando_lessons = Lesson.can_do
   end
 
 end

@@ -1,11 +1,11 @@
 <div id="sidebar" class="left">
-  <h2>Previous</h2>
+  <h2>You can do these next</h2>
 
-  <% if @lessons.blank? %>
+  <% if @cando_lessons.blank? %>
   no lessons
   <% else %>
   <ul>
-    <% @lessons.each do |l| %>
+    <% @cando_lessons.each do |l| %>
     <li>
       <% if ("current" if l == @lesson) %>
       <span class="current"><%= l.name %></span>
@@ -19,7 +19,7 @@
 </div>
 
 <div id="sidebar" class="right">
-  <h2>Next</h2>
+  <h2>All lessons</h2>
 
   <% if @lessons.blank? %>
   no lessons
