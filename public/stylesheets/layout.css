@@ -7,8 +7,7 @@ body {
 
 #nav {
     background: goldenrod;
-    text-align: center;
-    font-size: 50%;
+    padding: .5em;
 }
 
 #content {
@@ -20,7 +19,6 @@ body {
 #sidebar {
     background: #4F7995;
     width: 15%;
-    font-size: 75%;
 }
 
 #sidebar.left {
@@ -104,5 +102,8 @@ p {
     margin: .5em;
 }
 
-acronym { border-bottom: 1px dashed black; }
+acronym {
+    border-bottom: 1px dashed gray;
+}
+
 acronym:hover { cursor: help; }
