@@ -9,20 +9,26 @@
 <body>
 
   <div id="nav">
-    <div>
-      <div style="float:left">
-        <%= link_to 'create new lesson', new_lesson_path %>
-      </div>
-      <div style="float:right">
-        <%= link_to 'login' %>
-      </div>
-    </div>
-    <div style="clear:both"></div>
+    <% if current_user %>
+    Logged in as <%= current_user.email %>.
+    <%= link_to "Log out", log_out_path %>
+    <% else %>
+    <%= link_to "Sign up", sign_up_path %> or
+    <%= link_to "log in", log_in_path %>
+    <% end %>
+
+    <%= link_to 'create new lesson', new_lesson_path %>
+
   </div>
+
+  <% flash.each do |name, msg| %>
+  <%= content_tag :div, msg, :id => "flash_#{name}" %>
+  <% end %>
+
 
   <div id="main">
 
-    <%= render :partial => 'sidebar' %>
+    <%= render :partial => 'lessons/sidebar' %>
 
     <div id="content">
       <%= yield %>

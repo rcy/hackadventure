@@ -21,6 +21,7 @@ GEM
       builder (~> 2.1.2)
       i18n (~> 0.4)
     activesupport (3.0.5)
+    bcrypt-ruby (2.1.4)
     builder (2.1.2)
     couch_potato (0.4.0)
       activemodel
@@ -68,6 +69,7 @@ DEPENDENCIES
   actionmailer
   actionpack
   activemodel
+  bcrypt-ruby
   couch_potato
   httpclient (>= 0.2.6)
   railties
