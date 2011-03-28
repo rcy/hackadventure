@@ -16,4 +16,10 @@
   <%= textilize(@lesson.body).html_safe %>
 </div>
 
-<button id="mark_complete">Mark as completed</button>
+<% if !current_user.completed?(@lesson.id) %>
+  <%= form_tag completed_path, :remote => true, :id => 'completed' do %>
+    <%= hidden_field_tag :id, @lesson.id %>
+    <%= submit_tag 'Mark as completed' %>
+  <% end %>
+<% end %>
+

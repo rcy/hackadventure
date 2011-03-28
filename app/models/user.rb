@@ -15,6 +15,8 @@ class User
   validates_confirmation_of :password
   validates_presence_of :password, :on => :create
 
+  property :completed_lesson_ids
+
   view :by_email, :key => :email
 
   def save
@@ -33,6 +35,19 @@ class User
     else
       nil
     end
+  end
+
+  def complete_lesson lesson_id
+    unless completed? lesson_id
+      completed = self.completed_lesson_ids || []
+      completed << lesson_id
+      self.completed_lesson_ids = completed
+      self.save
+    end
+  end
+
+  def completed? lesson_id
+    self.completed_lesson_ids.find_index(lesson_id) if self.completed_lesson_ids
   end
 
 end

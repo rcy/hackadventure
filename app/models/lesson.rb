@@ -11,7 +11,19 @@ class Lesson
 
   view :by_name, :key => :name
   view :by_id, :key => :_id
-  view :by_dep, :key => :deps
+  view :by_dep, :map => <<END_JS, :include_docs => true, :type => :custom
+function(doc) {
+  if(doc.ruby_class && doc.ruby_class == 'Lesson') {
+    if (doc.deps.length > 0) {
+      for (d in doc.deps) {
+        emit(doc.deps[d], doc._id);
+      }
+    } else {
+        emit(null, doc._id);
+    }
+  }
+}
+END_JS
 
   def pretty_name
     name
@@ -22,7 +34,12 @@ class Lesson
   end
 
   def self.can_do
-    CouchPotato.database.view Lesson.by_dep(:key => [])
+    # FIXME: this should return all lessons with satisfied dependencies, not just ones with nil deps
+    self.depends_on nil
+  end
+
+  def self.depends_on id
+    CouchPotato.database.view Lesson.by_dep(:key => id)
   end
 
   def update params

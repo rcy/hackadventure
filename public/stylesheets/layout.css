@@ -107,3 +107,7 @@ acronym {
 }
 
 acronym:hover { cursor: help; }
+
+#alert {
+    background:red;
+}

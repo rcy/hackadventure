@@ -1,5 +1,6 @@
 Indirect::Application.routes.draw do
 
+  post "completed" => "lessons#completed", :as => "completed"
   resources :lessons
 
   # routes.rb

@@ -21,7 +21,9 @@ class LessonsController < ApplicationController
 
   def show
     @lesson = CouchPotato.database.load_document(params[:id])
+    @next_lessons = Lesson.depends_on @lesson.id
     @prerequisites = @lesson.prerequisites
+    @completed = current_user.completed_lesson_ids
   end
 
   def edit
@@ -41,10 +43,19 @@ class LessonsController < ApplicationController
     redirect_to :action => :index
   end
 
+  def completed
+    u = current_user
+    u.complete_lesson params[:id]
+
+    respond_to do |format|
+      format.html { render :text => "ok" }
+      # format.json { render :json => @lessons }
+    end
+  end
+
   private
   def get_lessons
     @lessons = Lesson.all
-    @cando_lessons = Lesson.can_do
   end
 
 end

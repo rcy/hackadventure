@@ -1,16 +1,17 @@
 <div id="sidebar" class="left">
-  <h2>You can do these now</h2>
+  <%= @completed %>
+  <h2>prereqs</h2>
 
-  <% if @cando_lessons.blank? %>
+  <% if @prerequisites.blank? %>
   no lessons
   <% else %>
   <ul>
-    <% @cando_lessons.each do |l| %>
+    <% @prerequisites.each do |l| %>
     <li>
       <% if ("current" if l == @lesson) %>
       <span class="current"><%= l.name %></span>
       <% else %>
-      <%= link_to l.name, l %>
+      <%= link_to (l ? l.name : "dead link"), l %>
       <% end %>
     </li>
     <% end %>
