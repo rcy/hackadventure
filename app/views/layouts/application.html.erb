@@ -9,21 +9,16 @@
 <body>
 
   <div id="nav">
+    Hack Adventure!
     <% if current_user %>
-    Logged in as <%= current_user.email %>.
-    <%= link_to "Log out", log_out_path %>
+      You are logged in as <%= current_user.email %>.
+      <%= link_to "Log out", log_out_path %>
     <% else %>
-    <%= link_to "Sign up", sign_up_path %> or
-    <%= link_to "log in", log_in_path %>
-    <% end %>
+      <%= link_to "Sign up", sign_up_path %> or
+      <%= link_to "log in", log_in_path %>
+    <% end %>.
 
-    <%= link_to 'create new lesson', new_lesson_path %>
-  </div>
-
-  <div id="alert">
-    <% flash.each do |name, msg| %>
-    <%= content_tag :div, msg, :id => "flash_#{name}" %>
-    <% end %>
+    <%= link_to 'Create new lesson', new_lesson_path %>.
   </div>
 
   <div id="main">
@@ -31,6 +26,10 @@
     <%= render :partial => 'lessons/sidebar' %>
 
     <div id="content">
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      <% end %>
+
       <%= yield %>
     </div>
 

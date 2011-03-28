@@ -87,6 +87,11 @@ END_JS
     end
   end
 
+  # return lessons that have this as a prerequisite
+  def next_lessons
+    Lesson.depends_on self.id
+  end
+
   def pretty_dependencies
     prerequisites.map(&:name).join(',')
   end

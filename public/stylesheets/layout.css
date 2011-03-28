@@ -13,7 +13,7 @@ body {
 #content {
     background: #ddd;
     float:left;
-    width: 70%;
+    width: 85%;
 }
 
 #sidebar {
@@ -50,11 +50,11 @@ pre {
     padding-left: 1.5em;
 }
 #sidebar li .current {
-    color: orange !important;
+    color: white !important;
 }
 
 #content a {
-    color: green;
+    color: darkorange;
 }
 
 a {
@@ -71,19 +71,19 @@ a:hover {
     padding: 1em;
 }
 #dependencies {
-    background: #9D877A;
+    background: white;
     color: black;
+    padding: .5em;
 }
 
 #dependencies p {
-    color: red;
     margin: 0;
     padding: 0;
     display: inline;
 }
 #dependencies a {
     text-decoration: none;
-    color: red;
+    font-weight: bold;
 }
 #dependencies a:hover {
     background: black;
@@ -108,13 +108,13 @@ acronym {
 
 acronym:hover { cursor: help; }
 
-#alert {
-    background:red;
+#flash_notice {
+    background:yellow;
 }
 
-#sidebar div.available li.unpublished {
+#sidebar div.available li.unpublished > *{
     color: #3A5160;
-    display: none;
+    /* display: none; */
 }
 
 #sidebar div.all li.unpublished > * {

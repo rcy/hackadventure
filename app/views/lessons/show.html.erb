@@ -3,17 +3,22 @@
   <%= link_to "Couch", "http://localhost:5984/_utils/document.html?indirect_development_db/#{@lesson.id}" %>
 </div>
 
-<h1><%= textilize(@lesson.name).html_safe %></h1>
-
 <div id="dependencies">
-  Prerequisites: 
+  Do these lessons first: 
   <% @prerequisites.each do |p| %>
     <%= link_to p && p.pretty_name, p %>
   <% end %>
+  <br />
+  Do these lessons next:
+  <% @next.each do |n| %>
+    <%= link_to n && n.pretty_name, n %>
+  <% end %>
 </div>
 
+<h1><%= @lesson.name %></h1>
+
 <div class="body">
-  <%= textilize(@lesson.body).html_safe %>
+  <%= safe_textilize(@lesson.body) %>
 </div>
 
 <%= form_tag completed_path, :remote => false, :id => 'completed' do %>

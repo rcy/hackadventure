@@ -7,9 +7,9 @@ module LessonsHelper
       html << "<li class=unpublished>"
     end
     if l == @lesson
-      html << "<span class=current>#{l.name}</span>"
+      html << "<span class=current>#{h(l.name)}</span>"
     else
-      html << link_to((l ? l.name : "dead link"), l)
+      html << link_to((l ? h(l.name) : "dead link"), l)
     end
     html << '</li>'
     html.html_safe
