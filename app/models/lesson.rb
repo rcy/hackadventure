@@ -9,6 +9,8 @@ class Lesson
 
   property :deps
 
+  property :published, :default => false
+
   view :by_name, :key => :name
   view :by_id, :key => :_id
   view :by_dep, :map => <<END_JS, :include_docs => true, :type => :custom
@@ -45,6 +47,7 @@ END_JS
   def update params
     self.name = params[:name]
     self.body = params[:body]
+    self.published = params[:published]
     dep_names = params[:pretty_dependencies].to_s.downcase.split(/,/).map(&:strip)
 
     self.deps = dep_names.map do |name|
@@ -89,12 +92,17 @@ END_JS
   end
 
   # return the set of lesson ids not completed
-  def missing_prerequisites completed_lesson_ids = []
-    self.deps - completed_lesson_ids
+  def missing_prerequisites completed_lesson_ids = nil
+    puts "missing_prerequisites: #{self.deps.inspect}, #{completed_lesson_ids.inspect}"
+    self.deps - (completed_lesson_ids || [])
   end
 
   # return the set of lesson ids that have been completed
-  def satisfied_prerequisites completed_lesson_ids = []
-    self.deps & completed_lesson_ids
+  def satisfied_prerequisites completed_lesson_ids = nil
+    self.deps & (completed_lesson_ids || [])
+  end
+
+  def published?
+    self.published.to_s == '1'
   end
 end

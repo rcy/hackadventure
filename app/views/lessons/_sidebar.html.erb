@@ -1,38 +1,30 @@
 <div id="sidebar" class="left">
   <%= @completed %>
-  <h2>available lessons</h2>
+  <div class="available">
+    <h2>available lessons</h2>
 
-  <% if @available.blank? %>
-  there is nothing you can do!
-  <% else %>
-  <ul>
-    <% @available.each do |l| %>
-    <li>
-      <% if ("current" if l == @lesson) %>
-      <span class="current"><%= l.name %></span>
-      <% else %>
-      <%= link_to (l ? l.name : "dead link"), l %>
+    <% if @available.blank? %>
+      there is nothing you can do!
+    <% else %>
+    <ul>
+      <% @available.each do |l| %>
+        <%= lesson_link_helper l %>
       <% end %>
-    </li>
+    </ul>
     <% end %>
-  </ul>
-  <% end %>
+  </div>
 
-  <h2>All lessons</h2>
+  <div class="all">
+    <h2>All lessons</h2>
 
-  <% if @lessons.blank? %>
-  no lessons
-  <% else %>
-  <ul>
-    <% @lessons.each do |l| %>
-    <li>
-      <% if ("current" if l == @lesson) %>
-      <span class="current"><%= l.name %></span>
-      <% else %>
-      <%= link_to l.name, l %>
+    <% if @lessons.blank? %>
+      no lessons!?
+    <% else %>
+    <ul>
+      <% @lessons.each do |l| %>
+        <%= lesson_link_helper l %>
       <% end %>
-    </li>
+    </ul>
     <% end %>
-  </ul>
-  <% end %>
+  </div>
 </div>

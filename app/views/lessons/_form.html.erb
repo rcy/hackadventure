@@ -17,6 +17,11 @@
     <%= f.text_area :body %>
   </fieldset>
 
+  <fieldset class="published">
+    <%= f.label :published, 'Published:' %>
+    <%= f.check_box :published %>
+  </fieldset>
+
   <%= f.submit %>
 
 </textfield>

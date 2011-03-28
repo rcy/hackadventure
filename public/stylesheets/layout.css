@@ -50,7 +50,7 @@ pre {
     padding-left: 1.5em;
 }
 #sidebar li .current {
-    color: orange;
+    color: orange !important;
 }
 
 #content a {
@@ -110,4 +110,13 @@ acronym:hover { cursor: help; }
 
 #alert {
     background:red;
+}
+
+#sidebar div.available li.unpublished {
+    color: #3A5160;
+    display: none;
+}
+
+#sidebar div.all li.unpublished > * {
+    color: #3A5160;
 }
