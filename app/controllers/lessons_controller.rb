@@ -43,10 +43,23 @@ class LessonsController < ApplicationController
 
   def completed
     u = current_user
-    u.complete_lesson params[:id]
+    if params[:completed] == "1"
+      u.complete_lesson params[:id], true
+      flash[:notice] = "Marked lesson as completed"
+    else
+      u.complete_lesson params[:id], false
+      flash[:notice] = "Marked lesson as NOT completed"
+    end
 
     respond_to do |format|
-      format.html { render :text => "ok" }
+      format.html do
+        if request.xhr?
+          render :text => flash[:notice]
+          flash[:notice] = nil
+        else
+          redirect_to :action => :show, :id => params[:id]
+        end
+      end
       # format.json { render :json => @lessons }
     end
   end
@@ -54,15 +67,20 @@ class LessonsController < ApplicationController
   private
   def get_lessons
     @lessons = Lesson.all
-    # @next_lessons = Lesson.depends_on @lesson.id
-    # @completed = current_user.completed_lesson_ids
 
     # compute the set of lessons that have all prerequisites satisfied
     # that have not been completed yet
     @available = []
+    @completed = []
+    @other = []
     @lessons.each do |lesson|
-      if (lesson.missing_prerequisites(current_user.completed_lesson_ids).blank? and not current_user.completed?(lesson.id))
+      if current_user.completed?(lesson.id)
+        @completed << lesson
+      elsif lesson.missing_prerequisites(current_user.completed_lesson_ids).blank?
         @available << lesson
+      else
+        # its neither completed nor has satisfied dependencies
+        @other << lesson
       end
     end
   end

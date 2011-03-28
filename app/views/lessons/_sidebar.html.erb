@@ -1,7 +1,19 @@
 <div id="sidebar" class="left">
-  <%= @completed %>
-  <div class="available">
-    <h2>available lessons</h2>
+  <div class="list completed">
+    <h3>completed</h3>
+    <% if @completed.blank? %>
+    <em style="font-size:50%">you haven't completed any yet</em>
+    <% else %>
+    <ul>
+    <% @completed.each do |l| %>
+      <%= lesson_link_helper l %>
+    <% end %>
+    </ul>
+    <% end %>
+  </div>
+
+  <div class="list available">
+    <h3>next</h3>
 
     <% if @available.blank? %>
       there is nothing you can do!
@@ -14,8 +26,8 @@
     <% end %>
   </div>
 
-  <div class="all">
-    <h2>All lessons</h2>
+  <div class="list all">
+    <h3>all</h3>
 
     <% if @lessons.blank? %>
       no lessons!?

@@ -17,7 +17,7 @@ body {
 }
 
 #sidebar {
-    background: #4F7995;
+    background: #3A5160;
     width: 15%;
 }
 
@@ -119,4 +119,11 @@ acronym:hover { cursor: help; }
 
 #sidebar div.all li.unpublished > * {
     color: #3A5160;
+}
+
+#sidebar div.list {
+    border: solid 1px black;
+    margin: .5em;
+    border-radius: 5px;
+    background: #4F7995;
 }

@@ -29,8 +29,13 @@ class User
 
   def self.authenticate(email, password)
     user = find_by_email(email)
-    if user && BCrypt::Password.new(user.password_hash) == password
-      user
+    if user
+      hash = BCrypt::Password.new(user.password_hash)
+      if hash == password
+        user
+      else
+        nil
+      end
     else
       nil
     end
@@ -40,10 +45,16 @@ class User
     self.completed_lesson_ids.find_index(lesson_id) if self.completed_lesson_ids
   end
 
-  def complete_lesson lesson_id
-    unless completed? lesson_id
-      self.completed_lesson_ids ||= []
-      self.completed_lesson_ids << lesson_id
+  def complete_lesson lesson_id, value
+    self.completed_lesson_ids ||= []
+
+    if value == true
+      unless completed? lesson_id
+        self.completed_lesson_ids << lesson_id
+        self.save
+      end
+    else
+      self.completed_lesson_ids.delete_if {|e| e == lesson_id}
       self.save
     end
   end

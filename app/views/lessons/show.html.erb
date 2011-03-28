@@ -16,10 +16,14 @@
   <%= textilize(@lesson.body).html_safe %>
 </div>
 
-<% if !current_user.completed?(@lesson.id) %>
-  <%= form_tag completed_path, :remote => true, :id => 'completed' do %>
-    <%= hidden_field_tag :id, @lesson.id %>
+<%= form_tag completed_path, :remote => false, :id => 'completed' do %>
+  <%= hidden_field_tag :id, @lesson.id %>
+  <% if !current_user.completed?(@lesson.id) %>
+    <%= hidden_field_tag :completed, "1" %>
     <%= submit_tag 'Mark as completed' %>
+  <% else %>
+    <%= hidden_field_tag :completed, "0" %>
+    <%= submit_tag 'Mark as not completed' %>
   <% end %>
 <% end %>
 
