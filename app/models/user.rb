@@ -10,7 +10,6 @@ class User
   validates_presence_of :password_hash
 
   attr_accessor :password
-  #before_save :encrypt_password
 
   validates_confirmation_of :password
   validates_presence_of :password, :on => :create
@@ -37,17 +36,16 @@ class User
     end
   end
 
-  def complete_lesson lesson_id
-    unless completed? lesson_id
-      completed = self.completed_lesson_ids || []
-      completed << lesson_id
-      self.completed_lesson_ids = completed
-      self.save
-    end
-  end
-
   def completed? lesson_id
     self.completed_lesson_ids.find_index(lesson_id) if self.completed_lesson_ids
+  end
+
+  def complete_lesson lesson_id
+    unless completed? lesson_id
+      self.completed_lesson_ids ||= []
+      self.completed_lesson_ids << lesson_id
+      self.save
+    end
   end
 
 end
