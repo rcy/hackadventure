@@ -1,12 +1,12 @@
 <div id="sidebar" class="left">
   <%= @completed %>
-  <h2>prereqs</h2>
+  <h2>available lessons</h2>
 
-  <% if @prerequisites.blank? %>
-  no lessons
+  <% if @available.blank? %>
+  there is nothing you can do!
   <% else %>
   <ul>
-    <% @prerequisites.each do |l| %>
+    <% @available.each do |l| %>
     <li>
       <% if ("current" if l == @lesson) %>
       <span class="current"><%= l.name %></span>
@@ -17,9 +17,7 @@
     <% end %>
   </ul>
   <% end %>
-</div>
 
-<div id="sidebar" class="right">
   <h2>All lessons</h2>
 
   <% if @lessons.blank? %>

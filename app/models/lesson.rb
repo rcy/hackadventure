@@ -87,4 +87,14 @@ END_JS
   def pretty_dependencies
     prerequisites.map(&:name).join(',')
   end
+
+  # return the set of lesson ids not completed
+  def missing_prerequisites completed_lesson_ids = []
+    self.deps - completed_lesson_ids
+  end
+
+  # return the set of lesson ids that have been completed
+  def satisfied_prerequisites completed_lesson_ids = []
+    self.deps & completed_lesson_ids
+  end
 end

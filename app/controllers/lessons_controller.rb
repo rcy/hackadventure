@@ -1,5 +1,5 @@
 class LessonsController < ApplicationController
-  before_filter :get_lessons
+  #before_filter :get_lessons
 
   def index
     respond_to do |format|
@@ -21,9 +21,20 @@ class LessonsController < ApplicationController
 
   def show
     @lesson = CouchPotato.database.load_document(params[:id])
-    @next_lessons = Lesson.depends_on @lesson.id
     @prerequisites = @lesson.prerequisites
-    @completed = current_user.completed_lesson_ids
+
+    @lessons = Lesson.all
+    # @next_lessons = Lesson.depends_on @lesson.id
+    # @completed = current_user.completed_lesson_ids
+
+    # compute the set of lessons that have all prerequisites satisfied
+    # that have not been completed yet
+    @available = []
+    @lessons.each do |lesson|
+      if (lesson.missing_prerequisites(current_user.completed_lesson_ids).blank? and not current_user.completed?(lesson.id))
+        @available << lesson
+      end
+    end
   end
 
   def edit
@@ -54,8 +65,5 @@ class LessonsController < ApplicationController
   end
 
   private
-  def get_lessons
-    @lessons = Lesson.all
-  end
 
 end
