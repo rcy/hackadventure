@@ -3,17 +3,12 @@
   <%= link_to "Couch", "http://localhost:5984/_utils/document.html?indirect_development_db/#{@lesson.id}" %>
 </div>
 
-<h1 class="title"><%= @lesson.name %></h1>
+<h1 class="title"><%= @lesson.pretty_name %></h1>
 
-<div id="dependencies">
+<div id="dependencies" class="hackpath">
   Do these lessons first: 
   <% @prerequisites.each do |p| %>
     <%= link_to p && p.pretty_name, p %>
-  <% end %>
-  <br />
-  Do these lessons next:
-  <% @next.each do |n| %>
-    <%= link_to n && n.pretty_name, n %>
   <% end %>
 </div>
 
@@ -25,10 +20,18 @@
   <%= hidden_field_tag :id, @lesson.id %>
   <% if !current_user.completed?(@lesson.id) %>
     <%= hidden_field_tag :completed, "1" %>
-    <%= submit_tag 'Mark as completed' %>
+    <%= submit_tag 'Mark as completed', :class => 'mark-complete' %>
   <% else %>
     <%= hidden_field_tag :completed, "0" %>
-    <%= submit_tag 'Mark as not completed' %>
+    <%= submit_tag 'Mark as not completed', :class => 'mark-incomplete' %>
   <% end %>
 <% end %>
 
+<div id="fromhere" class="hackpath">
+  Do these lessons next:
+  <% @next.each do |n| %>
+    <%= link_to n && n.pretty_name, n %>
+  <% end %>
+</div>
+
+&nbsp;

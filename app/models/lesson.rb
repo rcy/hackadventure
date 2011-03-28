@@ -28,7 +28,7 @@ function(doc) {
 END_JS
 
   def pretty_name
-    name
+    name.sub(/^meta:/,'')
   end
 
   def self.all

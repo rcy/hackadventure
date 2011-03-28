@@ -12,4 +12,9 @@ $(function() {
     .bind('ajax:success', function(e, data, status, xhr) {
       $(e.target).fadeOut(1000);
     });
+
+  $('div#everything h3')
+    .bind('click', function() {
+      $('.hide').toggle();
+    });
 });

@@ -14,7 +14,7 @@
   </div>
 
   <div class="list completed">
-    <h3>you have done</h3>
+    <h3>completed</h3>
     <% if @completed.blank? %>
     <em style="font-size:50%">you haven't completed any yet</em>
     <% else %>
@@ -26,17 +26,19 @@
     <% end %>
   </div>
 
-  <div class="list all">
+  <div id="everything" class="list all">
     <h3>everything else</h3>
 
-    <% if @other.blank? %>
-      no lessons!?
-    <% else %>
-    <ul>
-      <% @other.each do |l| %>
-        <%= lesson_link_helper l %>
+    <div class="hide">
+      <% if @other.blank? %>
+        no lessons!?
+      <% else %>
+      <ul>
+        <% @other.each do |l| %>
+          <%= lesson_link_helper l %>
+        <% end %>
+      </ul>
       <% end %>
-    </ul>
-    <% end %>
+    </div>
   </div>
 </div>
