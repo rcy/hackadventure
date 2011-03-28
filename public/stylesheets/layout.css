@@ -72,6 +72,8 @@ a:hover {
     padding: 1em;
 }
 .hackpath {
+    font-size: 80%;
+    background: gray;
     border: solid 1px #999;
     border-radius: 5px;
     padding: .5em;
@@ -86,9 +88,10 @@ a:hover {
 .hackpath a {
     text-decoration: none;
     font-weight: bold;
+    color: black !important;
 }
 .hackpath a:hover {
-    background: black;
+    background: white;
 }
 
 .edit {
@@ -102,7 +105,6 @@ h1 {
 
 h1.title {
     text-align: center;
-    font-size: 1em;
 }
 
 p {
