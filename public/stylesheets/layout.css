@@ -29,7 +29,7 @@ body {
     float:right;
 }
 
-#sidebar h1,h2,h3,h4 {
+#sidebar h1, #sidebar h2, #sidebar h3, #sidebar h4 {
     margin:0; padding:0; text-align: center;
 }
 
@@ -50,7 +50,8 @@ pre {
     padding-left: 1.5em;
 }
 #sidebar li .current {
-    color: white !important;
+    color: orange !important;
+    font-weight: bold;
 }
 
 #content a {
@@ -58,7 +59,7 @@ pre {
 }
 
 a {
-    color: black;
+    color: #eee;
     text-decoration: none;
 }
 
@@ -96,6 +97,11 @@ a:hover {
 h1 {
     margin: 0;
     padding: 0;
+}
+
+h1.title {
+    text-align: center;
+    font-size: 1em;
 }
 
 p {

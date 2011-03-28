@@ -3,6 +3,8 @@
   <%= link_to "Couch", "http://localhost:5984/_utils/document.html?indirect_development_db/#{@lesson.id}" %>
 </div>
 
+<h1 class="title"><%= @lesson.name %></h1>
+
 <div id="dependencies">
   Do these lessons first: 
   <% @prerequisites.each do |p| %>
@@ -14,8 +16,6 @@
     <%= link_to n && n.pretty_name, n %>
   <% end %>
 </div>
-
-<h1><%= @lesson.name %></h1>
 
 <div class="body">
   <%= safe_textilize(@lesson.body) %>
