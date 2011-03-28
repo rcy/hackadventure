@@ -14,13 +14,24 @@ class User
   validates_confirmation_of :password
   validates_presence_of :password, :on => :create
 
-  property :completed_lesson_ids
+  property :completed_lesson_ids, :default => []
 
   view :by_email, :key => :email
 
   def save
-    self.password_hash = BCrypt::Password.create(password)
+    puts "save: got here"
     CouchPotato.database.save_document self
+  end
+
+  def save!
+    puts "save!: got here"
+    puts "user: #{self.inspect}"
+    CouchPotato.database.save_document self
+    puts "save!: got here2"
+  end
+
+  def encrypt_password
+    self.password_hash = BCrypt::Password.create(password)
   end
 
   def self.find_by_email(email)
@@ -46,17 +57,22 @@ class User
   end
 
   def complete_lesson lesson_id, value
-    self.completed_lesson_ids ||= []
+    ids = self.completed_lesson_ids || []
+    puts "complete_lesson: #{self.completed_lesson_ids}"
 
     if value == true
       unless completed? lesson_id
-        self.completed_lesson_ids << lesson_id
-        self.save
+        ids << lesson_id
+        puts "got here: #{self.dirty?.inspect}"
+        puts "got here: #{self.dirty?.inspect}"
       end
     else
-      self.completed_lesson_ids.delete_if {|e| e == lesson_id}
-      self.save
+      ids.delete_if {|i| i == lesson_id}
     end
+    self.completed_lesson_ids = 'dirty' # hack to force dirtying object
+    self.completed_lesson_ids = ids
+    self.save!
+    puts "complete_lesson: #{self.completed_lesson_ids}"
   end
 
 end

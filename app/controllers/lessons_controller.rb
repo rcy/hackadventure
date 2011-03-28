@@ -46,7 +46,7 @@ class LessonsController < ApplicationController
     u = current_user
     if params[:completed] == "1"
       u.complete_lesson params[:id], true
-      flash[:notice] = "Marked lesson as completed"
+      flash[:notice] = "Well done! Marked lesson as completed."
     else
       u.complete_lesson params[:id], false
       flash[:notice] = "Marked lesson as NOT completed"

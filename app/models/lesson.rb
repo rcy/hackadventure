@@ -98,7 +98,6 @@ END_JS
 
   # return the set of lesson ids not completed
   def missing_prerequisites completed_lesson_ids = nil
-    puts "missing_prerequisites: #{self.deps.inspect}, #{completed_lesson_ids.inspect}"
     self.deps - (completed_lesson_ids || [])
   end
 
