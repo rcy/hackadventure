@@ -12,7 +12,6 @@ module LessonsHelper
       html << link_to((l ? l.name : "dead link"), l)
     end
     html << '</li>'
-    puts "lesson_link_helper: #{html}"
     html.html_safe
   end
 end
