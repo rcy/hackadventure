@@ -5,7 +5,6 @@ class Lesson
   validates_presence_of :name
 
   property :body
-  validates_presence_of :body
 
   property :deps
 
