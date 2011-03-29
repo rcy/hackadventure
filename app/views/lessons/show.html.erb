@@ -1,6 +1,7 @@
 <div class="edit">
   <%= link_to "Edit", edit_lesson_path(@lesson) %> |
-  <%= link_to "Couch", "http://localhost:5984/_utils/document.html?indirect_development_db/#{@lesson.id}" %>
+  <%= link_to "Couch", "http://localhost:5984/_utils/document.html?indirect_development_db/#{@lesson.id}" %> |
+  <%= link_to "New", new_lesson_path %>
 </div>
 
 <h1 class="title"><%= @lesson.pretty_name %></h1>
