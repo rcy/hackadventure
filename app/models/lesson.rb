@@ -4,6 +4,8 @@ class Lesson
   property :name
   validates_presence_of :name
 
+  property :title
+
   property :body
 
   property :deps
@@ -27,7 +29,7 @@ function(doc) {
 END_JS
 
   def pretty_name
-    name
+    title.presence || name
   end
 
   def self.all
@@ -45,6 +47,7 @@ END_JS
 
   def update params
     self.name = params[:name]
+    self.title = params[:title]
     self.body = params[:body]
     self.published = params[:published]
     dep_names = params[:pretty_dependencies].to_s.downcase.split(/,/).map(&:strip)

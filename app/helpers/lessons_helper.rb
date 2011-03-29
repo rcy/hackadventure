@@ -9,7 +9,7 @@ module LessonsHelper
     if l == @lesson
       html << "<span class=current>#{h(l.pretty_name)}</span>"
     else
-      html << link_to((l ? h(l.pretty_name) : "FIXME: dead link"), l)
+      html << link_to((l ? h(l.pretty_name) : "FIXME: dead link"), l, :title => l.name)
     end
     html << '</li>'
     html.html_safe

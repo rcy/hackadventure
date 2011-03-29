@@ -1,6 +1,6 @@
 <div id="sidebar" class="left">
   <div class="list available">
-    <h3>you can do</h3>
+    <h3>unread</h3>
 
     <% if @available.blank? %>
       there is nothing you can do!
@@ -14,9 +14,9 @@
   </div>
 
   <div class="list completed">
-    <h3>completed</h3>
+    <h3>you have read</h3>
     <% if @completed.blank? %>
-    <em style="font-size:50%">you haven't completed any yet</em>
+    <h4>nothing here yet</h4>
     <% else %>
     <ul>
     <% @completed.each do |l| %>

@@ -126,9 +126,11 @@ acronym:hover { cursor: help; }
     text-align: center;
 }
 
-#sidebar div.available li.unpublished > *{
+#sidebar div.available li.unpublished {
+    display: none;
+}
+#sidebar div.available li.unpublished > * {
     color: #3A5160;
-    /* display: none; */
 }
 
 #sidebar div.all li.unpublished > * {

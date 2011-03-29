@@ -3,7 +3,13 @@ class LessonsController < ApplicationController
 
   def index
     respond_to do |format|
-      format.html
+      format.html do
+        if @available.present?
+          redirect_to lesson_path(@available.first)
+        else
+          render
+        end
+      end
       format.json { render :json => @lessons }
     end
   end
@@ -46,10 +52,10 @@ class LessonsController < ApplicationController
     u = current_user
     if params[:completed] == "1"
       u.complete_lesson params[:id], true
-      flash[:notice] = "Well done! Marked lesson as completed."
+      flash[:notice] = "Marked lesson as read!"
     else
       u.complete_lesson params[:id], false
-      flash[:notice] = "Marked lesson as NOT completed"
+      flash[:notice] = "Lesson no longer marked as read"
     end
 
     respond_to do |format|
