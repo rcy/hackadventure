@@ -26,19 +26,4 @@
     <% end %>
   </div>
 
-  <div id="everything" class="list all">
-    <h3>everything else</h3>
-
-    <div class="hide">
-      <% if @other.blank? %>
-        no lessons!?
-      <% else %>
-      <ul>
-        <% @other.each do |l| %>
-          <%= lesson_link_helper l %>
-        <% end %>
-      </ul>
-      <% end %>
-    </div>
-  </div>
 </div>
