@@ -1,12 +1,15 @@
-default: &default
-  validation_framework: :active_model #optional
+#default: &default
+#  validation_framework: :active_model #optional
 
 development:
-  <<: *default
+#  <<: *default
+  validation_framework: :active_model #optional
   database: indirect_development_db
 test:
-  <<: *default
+#  <<: *default
+  validation_framework: :active_model #optional
   database: indirect_test_db
 production:
-  <<: *default
+#  <<: *default
+  validation_framework: :active_model #optional
   database: <%= ENV['DB_NAME'] %>
