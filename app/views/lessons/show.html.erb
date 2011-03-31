@@ -17,16 +17,16 @@
   <%= safe_textilize(@lesson.body) %>
 </div>
 
-<%= form_tag completed_path, :remote => false, :id => 'completed' do %>
-  <%= hidden_field_tag :id, @lesson.id %>
-  <% if !current_user.completed?(@lesson.id) %>
-    <%= hidden_field_tag :completed, "1" %>
-    <%= submit_tag 'Keep going', :class => 'mark-complete' %>
-  <% else %>
-    <%= hidden_field_tag :completed, "0" %>
-    <%= submit_tag 'Mark as unread', :class => 'mark-incomplete' %>
-  <% end %>
-<% end %>
+<!-- <%= form_tag completed_path, :remote => false, :id => 'completed' do %> -->
+<!--   <%= hidden_field_tag :id, @lesson.id %> -->
+<!--   <% if !current_user.completed?(@lesson.id) %> -->
+<!--     <%= hidden_field_tag :completed, "1" %> -->
+<!--     <%= submit_tag 'Keep going', :class => 'mark-complete' %> -->
+<!--   <% else %> -->
+<!--     <%= hidden_field_tag :completed, "0" %> -->
+<!--     <%= submit_tag 'Mark as unread', :class => 'mark-incomplete' %> -->
+<!--   <% end %> -->
+<!-- <% end %> -->
 
 <div id="fromhere" class="hackpath">
   Do these lessons next:
