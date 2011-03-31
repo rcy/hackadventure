@@ -1,4 +1,5 @@
 class LessonsController < ApplicationController
+  before_filter :logged_in?
   before_filter :get_lessons
 
   def index

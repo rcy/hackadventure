@@ -9,4 +9,8 @@ class ApplicationController < ActionController::Base
     @current_user ||= CouchPotato.database.load_document(session[:user_id]) if session[:user_id]
   end
 
+  def logged_in?
+    redirect_to :log_in unless current_user
+  end
+
 end
