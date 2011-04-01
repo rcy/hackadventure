@@ -5,8 +5,10 @@ module ApplicationHelper
     doc.to_html.html_safe
   end
 
-  def avatar_url(user)
+  def avatar_link(user)
     gravatar_id = Digest::MD5.hexdigest(user.email.downcase)
-    "http://gravatar.com/avatar/#{gravatar_id}.png?s=20"
+    link_to "http://www.gravatar.com/#{gravatar_id}", :title => "Visit gravatar profile" do
+      image_tag "http://gravatar.com/avatar/#{gravatar_id}.png?s=20&d=retro"
+    end
   end
 end
