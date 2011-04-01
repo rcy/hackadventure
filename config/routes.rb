@@ -10,6 +10,8 @@ Indirect::Application.routes.draw do
   resources :users
   resources :sessions
 
+  get 'graph' => "lessons#graph", :as => 'graph'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -72,6 +72,17 @@ class LessonsController < ApplicationController
     end
   end
 
+  def graph
+    respond_to do |format|
+      format.html do
+        render
+      end
+      format.json do
+        render :json => @lessons.map {|x| {:id => x.id, :name => x.name, :title => x.title, :deps => x.deps}}
+      end
+    end
+  end
+
   private
   def get_lessons
     @lessons = Lesson.all
