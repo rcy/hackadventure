@@ -127,7 +127,7 @@ acronym:hover { cursor: help; }
 }
 
 #sidebar div.available li.unpublished {
-    display: none;
+    /* display: none; */
 }
 #sidebar div.available li.unpublished > * {
     color: #3A5160;
@@ -145,7 +145,7 @@ acronym:hover { cursor: help; }
 }
 
 .hide {
-    display: none;
+    /* display: none; */
 }
 
 form#completed {

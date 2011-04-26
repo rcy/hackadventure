@@ -1,30 +1,30 @@
 <div id="sidebar" class="left">
-  <div class="list available">
-    <h3>unread</h3>
+  <!-- <div class="list available"> -->
+  <!--   <h3>unread</h3> -->
 
-    <% if @available.blank? %>
-      there is nothing you can do!
-    <% else %>
-    <ul>
-      <% @available.each do |l| %>
-        <%= lesson_link_helper l %>
-      <% end %>
-    </ul>
-    <% end %>
-  </div>
+  <!--   <% if @available.blank? %> -->
+  <!--     there is nothing you can do! -->
+  <!--   <% else %> -->
+  <!--   <ul> -->
+  <!--     <% @available.each do |l| %> -->
+  <!--       <%= lesson_link_helper l %> -->
+  <!--     <% end %> -->
+  <!--   </ul> -->
+  <!--   <% end %> -->
+  <!-- </div> -->
 
-  <div class="list completed">
-    <h3>you have read</h3>
-    <% if @completed.blank? %>
-    <h4>nothing here yet</h4>
-    <% else %>
-    <ul>
-    <% @completed.each do |l| %>
-      <%= lesson_link_helper l %>
-    <% end %>
-    </ul>
-    <% end %>
-  </div>
+  <!-- <div class="list completed"> -->
+  <!--   <h3>you have read</h3> -->
+  <!--   <% if @completed.blank? %> -->
+  <!--   <h4>nothing here yet</h4> -->
+  <!--   <% else %> -->
+  <!--   <ul> -->
+  <!--   <% @completed.each do |l| %> -->
+  <!--     <%= lesson_link_helper l %> -->
+  <!--   <% end %> -->
+  <!--   </ul> -->
+  <!--   <% end %> -->
+  <!-- </div> -->
 
   <div id="everything" class="list all">
     <h3>everything else</h3>

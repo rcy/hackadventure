@@ -85,7 +85,7 @@ class LessonsController < ApplicationController
 
   private
   def get_lessons
-    @lessons = Lesson.all
+    @lessons = Lesson.all.find_all {|l| l.name =~ /^rb:/}
 
     # compute the set of lessons that have all prerequisites satisfied
     # that have not been completed yet
@@ -102,5 +102,8 @@ class LessonsController < ApplicationController
         @other << lesson
       end
     end
+    @other = @lessons
+    @other.sort! {|a,b| a.deps <=> b.deps}
+    @other
   end
 end

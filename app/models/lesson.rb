@@ -29,7 +29,7 @@ function(doc) {
 END_JS
 
   def pretty_name
-    title.presence || name
+    name
   end
 
   def self.all
