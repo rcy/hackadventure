@@ -1,4 +1,6 @@
 Hackadventure::Application.routes.draw do
+  resources :solutions
+
   resources :projects
 
   resources :adventures

@@ -4,4 +4,6 @@ class Project < ActiveRecord::Base
 
   belongs_to :adventure
   validates :adventure, :presence => true
+
+  has_many :solutions
 end

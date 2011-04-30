@@ -1,12 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <%= @project.adventure %>: <b><%= @project.name %></b>
+  <%= @project.adventure %> Project: <b><%= @project.name %></b>
 </p>
 
 <p>
-  <%= @project.content %>
+  <%= textilize(@project.content).html_safe %>
 </p>
+
+<% @project.solutions.each do |s| %>
+<p>
+  See <%= link_to "Solution #{s.id}", s %>
+</p>
+<% end %>
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>
