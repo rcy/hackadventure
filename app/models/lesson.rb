@@ -1,6 +1,7 @@
 class Lesson
   include CouchPotato::Persistence
 
+  # name is MODULE:LESSON, ie rb:function, sh:echo
   property :name
   validates_presence_of :name
 
