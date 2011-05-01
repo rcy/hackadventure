@@ -17,5 +17,13 @@
   </ul>
 </p>
 
+<div class="comments">
+  <b>comments:</b>
+  <% @adventure.comments.each do |c| %>
+  <p><%= c.content %></p>
+  <% end %>
+  <%= link_to "Add Comment", new_adventure_comment_path(@adventure) %>
+</div>
+
 <%= link_to 'Back', adventures_path %> |
 <%= link_to 'Edit', edit_adventure_path(@adventure) %>

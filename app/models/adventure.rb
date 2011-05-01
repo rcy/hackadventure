@@ -1,8 +1,8 @@
 class Adventure < ActiveRecord::Base
   validates :name, :presence => true
   validates :description, :presence => true
-
   has_many :projects
+  has_many :comments, :as => :commentable
 
   def to_s
     name.capitalize

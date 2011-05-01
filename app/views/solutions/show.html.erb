@@ -9,5 +9,14 @@
   <%= textilize(@solution.content).html_safe %>
 </p>
 
+<div class="comments">
+  <b>comments:</b>
+  <% @solution.comments.each do |c| %>
+  <p><%= c.content %></p>
+  <% end %>
+  <%= link_to "Add Comment", new_solution_comment_path(@solution) %>
+</div>
+
+
 <%= link_to 'Back to project', @solution.project %> |
 <%= link_to 'Edit', edit_solution_path(@solution) %>
