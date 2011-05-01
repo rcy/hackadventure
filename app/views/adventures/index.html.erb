@@ -4,7 +4,7 @@
   <% @adventures.each do |adventure| %>
   <li>
     <%= link_to adventure.name, adventure %> --
-    <%= adventure.description %>
+    <%= adventure.short_description %>
   </li>
 <% end %>
 </ul>

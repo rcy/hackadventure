@@ -7,4 +7,9 @@ class Adventure < ActiveRecord::Base
   def to_s
     name.capitalize
   end
+
+  # return just the first line of the description
+  def short_description
+    description.split(/\n/).first
+  end
 end

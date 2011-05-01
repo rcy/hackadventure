@@ -1,9 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b><%= @adventure.name.capitalize %> -- </b>
-  <%= @adventure.description %>
+  <b><%= @adventure.name.capitalize %></b>
 </p>
+
+<%= textilize(@adventure.description).html_safe %>
 
 <p>
   Projects:
