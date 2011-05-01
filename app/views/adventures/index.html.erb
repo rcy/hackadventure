@@ -1,24 +1,13 @@
-<h1>Listing adventures</h1>
+<h1>Hack Adventures</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @adventures.each do |adventure| %>
-  <tr>
-    <td><%= adventure.name %></td>
-    <td><%= adventure.description %></td>
-    <td><%= link_to 'Show', adventure %></td>
-    <td><%= link_to 'Edit', edit_adventure_path(adventure) %></td>
-    <td><%= link_to 'Destroy', adventure, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+<ul>
+  <% @adventures.each do |adventure| %>
+  <li>
+    <%= link_to adventure.name, adventure %> --
+    <%= adventure.description %>
+  </li>
 <% end %>
-</table>
+</ul>
 
 <br />
 

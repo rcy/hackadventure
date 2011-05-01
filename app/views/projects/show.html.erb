@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <%= @project.adventure %> Project: <b><%= @project.name %></b>
+  <%= link_to @project.adventure, @project.adventure %> Project: <b><%= @project.name %></b>
 </p>
 
 <p>
@@ -14,5 +14,5 @@
 </p>
 <% end %>
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<%= link_to "Back to #{@project.adventure} projects", @project.adventure %> |
+<%= link_to 'Edit', edit_project_path(@project) %>
