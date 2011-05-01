@@ -14,5 +14,13 @@
 </p>
 <% end %>
 
+<div class="comments">
+  <b>comments:</b>
+  <% @project.comments.each do |c| %>
+  <p><%= c.content %></p>
+  <% end %>
+  <%= link_to "Add Comment", new_project_comment_path(@project) %>
+</div>
+
 <%= link_to "Back to #{@project.adventure} projects", @project.adventure %> |
 <%= link_to 'Edit', edit_project_path(@project) %>

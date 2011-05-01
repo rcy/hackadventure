@@ -1,8 +1,13 @@
 Hackadventure::Application.routes.draw do
+
   root :to => "adventures#index"
 
   resources :adventures
-  resources :projects
+  resources :projects do
+    resources :comments
+  end
   resources :solutions
+
+  resources :comments
 
 end

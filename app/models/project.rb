@@ -6,4 +6,5 @@ class Project < ActiveRecord::Base
   validates :adventure, :presence => true
 
   has_many :solutions
+  has_many :comments, :as => :commentable
 end
