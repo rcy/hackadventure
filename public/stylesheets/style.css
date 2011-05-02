@@ -1,0 +1,34 @@
+#content {
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.project, .solution {
+    padding: 1em;
+    background: #ddd;
+}
+
+.project pre {
+    background-color: black;
+    color: white;
+}
+
+.hint {
+    border: 2px solid #5f5;
+    border-radius: 5px;
+    background: #8f8;
+    padding: .5em;
+}
+
+.comments {
+    padding: .5em;
+    border: solid 1px black;
+}
+
+.solutions {
+    padding: 1em;
+    border-radius: 5px;
+    float: right;
+    background: orange;
+}

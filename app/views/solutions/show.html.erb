@@ -1,13 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Solution to Project:</b>
-  <%= link_to @solution.project.name, @solution.project %>
-</p>
+<div class="solution">
+  <h1>
+    <b>Solution to <%= link_to @solution.project.adventure, @solution.project.adventure %> Project:</b>
+    <%= link_to @solution.project.name, @solution.project %>
+  </h1>
 
-<p>
-  <%= textilize(@solution.content).html_safe %>
-</p>
+  <p>
+    <%= textilize(@solution.content).html_safe %>
+  </p>
+</div>
 
 <div class="comments">
   <b>comments:</b>

@@ -1,18 +1,26 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <%= link_to @project.adventure, @project.adventure %> Project: <b><%= @project.name %></b>
-</p>
+<div class="project">
+  <h1>
+    <%= link_to @project.adventure, @project.adventure %> Project: <b><%= @project.name %></b>
+  </h1>
 
-<p>
-  <%= textilize(@project.content).html_safe %>
-</p>
+  <p>
+    <%= textilize(@project.content).html_safe %>
+  </p>
 
-<% @project.solutions.each do |s| %>
-<p>
-  See <%= link_to "Solution #{s.id}", s %>
-</p>
-<% end %>
+  <div class="solutions">
+    <% @project.solutions.each_with_index do |s, i| %>
+    <p>
+      See <%= link_to "Solution #{i+1}", s %>
+    </p>
+    <% end %>
+  </div>
+
+  <div style="clear: both">&nbsp;</div>
+
+</div>
+
 
 <div class="comments">
   <b>comments:</b>
