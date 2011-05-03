@@ -1,34 +1,50 @@
-#content {
-    width: 800px;
+body {
+    padding: 0;
+    margin: 0;
+    background: #321;
+}
+#content-container {
+    width: 960px;
     margin-left: auto;
     margin-right: auto;
+    background: black;
+    margin-top: 1em;
+    padding: .2em;
+    border-radius: 5px;
 }
 
-.project, .solution {
+#content {
+    /* border-radius: 5px; */
     padding: 1em;
     background: #ddd;
 }
 
+/* .project, .solution { */
+/*     padding: 1em; */
+/*     background: #ddd; */
+/* } */
+
 .project pre {
-    background-color: black;
-    color: white;
+    padding: 10px;
+    border: dotted 1px orange;
+    background: #ded;
 }
 
-.hint {
-    border: 2px solid #5f5;
-    border-radius: 5px;
-    background: #8f8;
-    padding: .5em;
-}
+/* .hint { */
+/*     border: 2px solid #5f5; */
+/*     border-radius: 5px; */
+/*     background: #8f8; */
+/*     padding: .5em; */
+/* } */
 
-.comments {
-    padding: .5em;
-    border: solid 1px black;
-}
+/* .comments { */
+/*     padding: .5em; */
+/*     border: solid 1px black; */
+/* } */
 
-.solutions {
-    padding: 1em;
-    border-radius: 5px;
-    float: right;
-    background: orange;
-}
+/* .solutions { */
+/*     padding: 1em; */
+/*     border-radius: 5px; */
+/*     float: right; */
+/*     background: orange; */
+/* } */
