@@ -1,11 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<div class="solution">
-  <h1>
-    <b>Solution to <%= link_to @solution.project.adventure, @solution.project.adventure %> Project:</b>
-    <br><%= link_to @solution.project.name, @solution.project %>
-  </h1>
+<% content_for :title do %>
+  Solution to <%= link_to @solution.project.adventure, @solution.project.adventure %> Project:
+  <%= link_to @solution.project.name, @solution.project %>
+<% end %>
 
+<div class="solution">
   <p>
     <%= textilize(@solution.content).html_safe %>
   </p>

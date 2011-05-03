@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b><%= @adventure.name.capitalize %></b>
-</p>
+<% content_for :title do %>
+  <%= @adventure.name.capitalize %>
+<% end %>
 
 <%= textilize(@adventure.description).html_safe %>
 

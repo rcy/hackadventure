@@ -1,10 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<div class="project">
-  <h1>
-    <%= link_to @project.adventure, @project.adventure %> Project: <b><%= @project.name %></b>
-  </h1>
+<% content_for :title do %>
+  <%= link_to @project.adventure, @project.adventure %> Project: <b><%= @project.name %></b>
+<% end %>
 
+<div class="project">
   <p>
     <%= textilize(@project.content).html_safe %>
   </p>
@@ -25,7 +25,10 @@
 <div class="comments">
   <b>comments:</b>
   <% @project.comments.each do |c| %>
-  <p><%= c.content %></p>
+  <div class="comment <%= cycle('odd', 'even') %>">
+    <strong>Tue May  3 16:41:18 PDT 2011</strong>
+    <p><%= c.content %></p>
+  </div>
   <% end %>
   <%= link_to "Add Comment", new_project_comment_path(@project) %>
 </div>

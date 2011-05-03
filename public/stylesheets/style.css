@@ -19,32 +19,47 @@ body {
     background: #ddd;
 }
 
-/* .project, .solution { */
-/*     padding: 1em; */
-/*     background: #ddd; */
-/* } */
+#title {
+    color: white;
+    background: black;
+    padding: 10px;
+    font-size: 200%;
+}
 
-.project pre {
+.solution pre, .project pre {
     padding: 10px;
     border: dotted 1px orange;
+}
+.project pre {
     background: #ded;
 }
 
-/* .hint { */
-/*     border: 2px solid #5f5; */
-/*     border-radius: 5px; */
-/*     background: #8f8; */
-/*     padding: .5em; */
-/* } */
+.solution pre {
+    background: #edd;
+}
 
-/* .comments { */
-/*     padding: .5em; */
-/*     border: solid 1px black; */
-/* } */
+.hint {
+    border: 2px solid #5f5;
+    border-radius: 5px;
+    background: #8f8;
+    padding: .5em;
+}
 
-/* .solutions { */
-/*     padding: 1em; */
-/*     border-radius: 5px; */
-/*     float: right; */
-/*     background: orange; */
-/* } */
+div.comments {
+    padding: .5em;
+    background: #fff;
+}
+
+div.comment {
+    margin: 1em;
+    padding: .5em;
+}
+div.comment.odd { background: #ccc; }
+div.comment.even { background: #ccd; }
+
+.solutions {
+    padding: 1em;
+    border-radius: 5px;
+    float: right;
+    background: orange;
+}
