@@ -30,3 +30,4 @@ gem 'sqlite3'
 #   gem 'webrat'
 # end
 gem "RedCloth", :require => 'redcloth'
+gem "devise"
