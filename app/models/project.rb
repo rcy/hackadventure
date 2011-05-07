@@ -7,4 +7,7 @@ class Project < ActiveRecord::Base
 
   has_many :solutions
   has_many :comments, :as => :commentable
+
+  has_many :completions
+  has_many :users_completed, :through => :completions, :source => :user
 end
