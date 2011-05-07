@@ -1,1 +1,13 @@
 This is hack adventure.
+
+Users can create projects for others to read and try out.
+
+Projects can be lessons, or can be exercises.  Solutions can be linked
+to projects.
+
+Projects are grouped into Adventures.
+
+There are dependencies between projects.
+
+Users can write comments on projects and solutions to share their
+work, or ask for help.
