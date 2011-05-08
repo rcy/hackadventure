@@ -10,6 +10,9 @@
 
     <div id="content-container">
       <div id="nav">
+        <div class="home">
+          <%= link_to "Home", root_path %>
+        </div>
         <div class="login">
           <% if user_signed_in? %>
             <%= current_user.email %> | <%= link_to 'sign out', destroy_user_session_path %>

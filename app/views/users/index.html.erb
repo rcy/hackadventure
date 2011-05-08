@@ -1,0 +1,30 @@
+<% content_for :title do %>
+<%= current_user %>
+<% end %>
+
+<table border=1 style="width: 100%">
+  <th style="width: 50%">
+    <h1>next</h1>
+  <th style="width: 50%">
+    <h1>completed</h1>
+  </th>
+
+  <tr>
+    <td>
+      <% current_user.incompleted_projects.each do |p| %>
+      <li>
+        <%= link_to p, p %>
+      </li>
+      <% end %>
+    </td>
+    <td>
+      <ul>
+        <% current_user.completed_projects.each do |p| %>
+        <li>
+          <%= link_to p, p %>
+        </li>
+        <% end %>
+      </ul>
+    </td>
+  </tr>
+</table>

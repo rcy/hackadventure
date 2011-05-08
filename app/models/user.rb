@@ -13,4 +13,13 @@ class User < ActiveRecord::Base
   def name
     email
   end
+
+  def to_s
+    email.split('@').first
+  end
+
+  def incompleted_projects
+    completed_ids = completed_projects.map(&:id)
+    Project.find(:all, :conditions => ["id not in (?)", completed_ids])
+  end
 end

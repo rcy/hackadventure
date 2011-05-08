@@ -15,4 +15,8 @@ class Project < ActiveRecord::Base
   def completed? user
     completions.find_by_user_id user.id
   end
+
+  def to_s
+    name
+  end
 end
