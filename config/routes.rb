@@ -9,6 +9,8 @@ Hackadventure::Application.routes.draw do
   end
   resources :projects do
     resources :comments
+    post :mark_complete, :on => :member
+    post :unmark_complete, :on => :member
   end
   resources :solutions do
     resources :comments

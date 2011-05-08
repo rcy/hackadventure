@@ -10,4 +10,9 @@ class Project < ActiveRecord::Base
 
   has_many :completions
   has_many :users_completed, :through => :completions, :source => :user
+
+  # return non-nil if USER has completed this project
+  def completed? user
+    completions.find_by_user_id user.id
+  end
 end

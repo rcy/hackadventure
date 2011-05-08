@@ -5,6 +5,17 @@
 <% end %>
 
 <div class="project">
+  <% if @completed %>
+  <div class="completed">
+    You completed this project on <%= @completed.updated_at %>
+    <%= link_to "Mark as Not Completed", unmark_complete_project_path, :method => :post %>
+  </div>
+  <% else %>
+  <div class="not completed">
+    <%= link_to "Mark as Completed", mark_complete_project_path, :method => :post %>
+  </div>
+  <% end %>
+
   <p>
     <%= textilize(@project.content).html_safe %>
   </p>

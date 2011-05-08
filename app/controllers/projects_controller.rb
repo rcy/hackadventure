@@ -14,6 +14,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1.xml
   def show
     @project = Project.find(params[:id])
+    @completed = @project.completed? current_user
 
     respond_to do |format|
       format.html # show.html.erb
@@ -79,5 +80,19 @@ class ProjectsController < ApplicationController
       format.html { redirect_to(projects_url) }
       format.xml  { head :ok }
     end
+  end
+
+  def mark_complete
+    @project = Project.find(params[:id])
+    @project.users_completed << current_user
+    flash[:notice] = "Marked project as COMPLETED!"
+    redirect_to @project
+  end
+
+  def unmark_complete
+    @project = Project.find(params[:id])
+    @project.users_completed.delete current_user
+    flash[:notice] = "Marked project as incomplete"
+    redirect_to @project
   end
 end
