@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <% content_for :title do %>
-  Solution to <%= link_to @solution.project.adventure, @solution.project.adventure %> Project:
+  Solution to <% @solution.project.adventure %> project:
   <%= link_to @solution.project.name, @solution.project %>
 <% end %>
 
@@ -20,6 +20,4 @@
   <%= link_to "Add Comment", new_solution_comment_path(@solution) %>
 </div>
 
-
-<%= link_to 'Back to project', @solution.project %> |
-<%= link_to 'Edit', edit_solution_path(@solution) %>
+<%= link_to 'Edit', admin_edit(@solution) if is_admin? %>

@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <% content_for :title do %>
-  <%= link_to @project.adventure, @project.adventure %> Project: <b><%= @project.name %></b>
+  <%= @project.adventure %> project: <b><%= @project.name %></b>
 <% end %>
 
 <div class="project">
@@ -44,5 +44,4 @@
   <%= link_to "Add Comment", new_project_comment_path(@project) %>
 </div>
 
-<%= link_to "Back to #{@project.adventure} projects", @project.adventure %> |
-<%= link_to 'Edit', edit_project_path(@project) %>
+<%= link_to 'Edit', admin_edit(@project) %>

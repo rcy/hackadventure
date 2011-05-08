@@ -22,4 +22,9 @@ class User < ActiveRecord::Base
     completed_ids = completed_projects.map(&:id)
     Project.find(:all, :conditions => ["id not in (?)", completed_ids])
   end
+
+  # FIXME: add field to db for this
+  def is_admin?
+    true
+  end
 end
