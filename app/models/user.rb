@@ -9,4 +9,8 @@ class User < ActiveRecord::Base
 
   has_many :completions
   has_many :completed_projects, :through => :completions, :source => :project
+
+  def name
+    email
+  end
 end
