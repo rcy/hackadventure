@@ -20,6 +20,6 @@ class Project < ActiveRecord::Base
   end
 
   def to_s
-    name
+    "#{adventure.name.capitalize}: #{name}"
   end
 end
