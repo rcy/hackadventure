@@ -11,7 +11,7 @@
 
   <tr>
     <td>
-      <% current_user.incompleted_projects.each do |p| %>
+      <% @next_projects.each do |p| %>
       <li>
         <%= link_to p, p %>
       </li>
@@ -19,7 +19,7 @@
     </td>
     <td>
       <ul>
-        <% current_user.completed_projects.each do |p| %>
+        <% @completed_projects.each do |p| %>
         <li>
           <%= link_to p, p %>
         </li>

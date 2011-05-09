@@ -20,7 +20,20 @@ class User < ActiveRecord::Base
 
   def incompleted_projects
     completed_ids = completed_projects.map(&:id)
-    Project.find(:all, :conditions => ["id not in (?)", completed_ids])
+    cond = ["id not in (?)", completed_ids] unless completed_ids.blank?
+    Project.find(:all, :conditions => cond, :include => :prereqs)
+  end
+
+  # returns incompleted projects that have satisfied dependencies
+  def next_projects
+    completed_ids = completed_projects.map(&:id)
+    avail = []
+    incompleted_projects.each do |ip|
+      if (ip.prereq_ids - completed_ids).blank?
+        avail.push ip
+      end
+    end
+    avail
   end
 
   # FIXME: add field to db for this

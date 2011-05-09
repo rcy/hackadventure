@@ -2,7 +2,8 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.xml
   def index
-    @users = User.all
+    @completed_projects = current_user.completed_projects
+    @next_projects = current_user.next_projects
 
     respond_to do |format|
       format.html # index.html.erb
