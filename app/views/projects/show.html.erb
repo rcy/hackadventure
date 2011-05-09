@@ -5,6 +5,20 @@
 <% end %>
 
 <div class="project">
+  <div class="prereqs">
+    <% if @project.prereqs.blank? %>
+    There are no prerequisite lessons
+    <% else %>
+    If you are stuck on this, you can go back to:
+    <ul>
+      <% @project.prereqs.each do |p| %>
+      <li><%= link_to p,p %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  </div>
+  <div style="clear:both"></div>
+
   <p>
     <%= textilize(@project.content).html_safe %>
   </p>
@@ -34,4 +48,4 @@
 
 <%= comments_for @project %>
 
-<%= link_to 'Edit', admin_edit(@project) %>
+<%= link_to 'Edit', edit_project_path(@project) %>

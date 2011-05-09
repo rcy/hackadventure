@@ -20,6 +20,10 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
+    <%= f.label "prereq" %><br />
+    <%= f.select "prereq_ids", Project.all.collect{|a| [a.name, a.id]}, {:prompt => "Select prerequisites"}, {:multiple => true} %>
+  </div>
+  <div class="field">
     <%= f.label :content %><br />
     <%= f.text_area :content %>
   </div>
