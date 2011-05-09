@@ -5,20 +5,6 @@
 <% end %>
 
 <div class="project">
-  <div class="prereqs">
-    <% if @project.prereqs.blank? %>
-    There are no prerequisite lessons
-    <% else %>
-    If you are stuck on this, you can go back to:
-    <ul>
-      <% @project.prereqs.each do |p| %>
-      <li><%= link_to p,p %></li>
-      <% end %>
-    </ul>
-  <% end %>
-  </div>
-  <div style="clear:both"></div>
-
   <p>
     <%= textilize(@project.content).html_safe %>
   </p>
@@ -38,13 +24,29 @@
 <% if @completed %>
 <div class="completed">
   You completed this project on <%= @completed.updated_at %>
-  <%= link_to "Mark as Not Completed", unmark_complete_project_path, :method => :post %>
+  <%= link_to "Mark as Not Finished", unmark_complete_project_path, :method => :post %>
 </div>
 <% else %>
 <div class="not completed">
-  <%= link_to "Mark as Completed", mark_complete_project_path, :method => :post %>
+  When you think you have completed this project:
+  <%= link_to "Mark as Finished", mark_complete_project_path, :method => :post %>
 </div>
 <% end %>
+
+<div class="prereqs">
+  <% if @project.prereqs.blank? %>
+  There are no prerequisite lessons
+  <% else %>
+  If you are stuck on this, you can go back to:
+  <ul>
+    <% @project.prereqs.each do |p| %>
+    <li><%= link_to p,p %></li>
+    <% end %>
+  </ul>
+  Or add a comment with your question or broken code.
+  <% end %>
+</div>
+<div style="clear:both"></div>
 
 <%= comments_for @project %>
 

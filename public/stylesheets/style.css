@@ -66,11 +66,12 @@ div.comment.even { background: #ccd; }
 }
 .notice { background: lime; }
 .alert { background: pink; }
-.project .completion {
-    background: green;
+.completed {
+    text-align: center;
+    background: #efe;
     color: black;
     padding: 10px;
 }
-.project .completion .not {
+.completed .not {
     background: gray;
 }
