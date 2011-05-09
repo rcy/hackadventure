@@ -1,5 +1,7 @@
 Hackadventure::Application.routes.draw do
 
+  resources :project_prereqs
+
   devise_for :users
 
   root :to => "users#index"
