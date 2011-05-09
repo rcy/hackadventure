@@ -11,13 +11,6 @@
   </p>
 </div>
 
-
-<div class="comments">
-  <b>comments:</b>
-  <% @solution.comments.each do |c| %>
-  <p><%= c.content %></p>
-  <% end %>
-  <%= link_to "Add Comment", new_solution_comment_path(@solution) %>
-</div>
+<%= comments_for @solution %>
 
 <%= link_to 'Edit', admin_edit(@solution) if is_admin? %>

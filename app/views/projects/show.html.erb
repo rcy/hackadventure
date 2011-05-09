@@ -32,15 +32,6 @@
 </div>
 <% end %>
 
-<div class="comments">
-  <b>comments:</b>
-  <% @project.comments.each do |c| %>
-  <div class="comment <%= cycle('odd', 'even') %>">
-    <strong><%= c.user %></strong> -- <em><%= c.ago %> ago</em>
-    <p><%= c.content %></p>
-  </div>
-  <% end %>
-  <%= link_to "Add Comment", new_project_comment_path(@project) %>
-</div>
+<%= comments_for @project %>
 
 <%= link_to 'Edit', admin_edit(@project) %>

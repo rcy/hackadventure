@@ -1,0 +1,20 @@
+<div class="comments">
+  <b>Comments on this <%= commentable.class %>:</b>
+  <% commentable.comments.each do |c| %>
+  <div class="comment <%= cycle('odd', 'even') %>">
+    <strong><%= c.user %></strong> -- <em><%= c.ago %> ago</em>
+    <p><%= c.content %></p>
+  </div>
+  <% end %>
+
+  <div class="add">
+    Add your comment or question (signed in as: <%= current_user.email %>):
+    <br>
+    <%= form_for [commentable, Comment.new] do |f| %>
+      <br />
+      <%= f.text_area :content, :cols => 80, :rows => 10 %>
+      <br />
+      <%= f.submit "Post comment" %>
+    <% end %>
+  </div>
+</div>
