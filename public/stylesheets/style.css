@@ -34,7 +34,7 @@ body {
 .project pre {
     background: #ded;
 }
-.project pre.output {
+.project pre.output, .solution pre.output {
     background: #cce;
 }
 
