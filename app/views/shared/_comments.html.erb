@@ -3,7 +3,7 @@
   <% commentable.comments.each do |c| %>
   <div class="comment <%= cycle('odd', 'even') %>">
     <strong><%= c.user %></strong> -- <em><%= c.ago %> ago</em>
-    <p><%= c.content %></p>
+    <p><pre><%= c.content %></pre></p>
   </div>
   <% end %>
 
